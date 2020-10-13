@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+group 'com.cloud.leetcode'
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    archivesBaseName = 'app'
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+dependencies {
+    implementation 'junit:junit:4.9'
+    implementation 'org.mockito:mockito-all:1.9.5'
+    implementation 'org.easytesting:fest-assert:1.4'
+    implementation 'org.apache.commons:commons-lang3:3.10'
+}
